@@ -1,6 +1,7 @@
 # Aufgabenblatt
 *.pdf
-
+# VP backups
+*.bak*
 # Compiled class file
 *.class
 
