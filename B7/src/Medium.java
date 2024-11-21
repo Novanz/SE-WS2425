@@ -4,7 +4,7 @@ public class Medium {
 	private String autor;
 	private String publisher;
 	private int year;
-	private int isbn;
+	private long isbn;
 	private boolean reserved;
 	private String catergory;
 	private int id;
@@ -57,11 +57,11 @@ public class Medium {
 		this.year = year;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 
