@@ -1,13 +1,12 @@
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class FSElementTest {
 
     @Test
     void printNestedDirectoriesAndFiles() {
-        File file1 = new File("file1");
-        File file2 = new File("file2");
-        File file3 = new File("file3");
+        File file1 = new File("file1", 10);
+        File file2 = new File("file2", 100);
+        File file3 = new File("file3", 1000);
 
         Directory dir1 = new Directory("dir1");
         Directory dir2 = new Directory("dir2");
@@ -22,5 +21,8 @@ class FSElementTest {
         root.addElement(dir2);
 
         root.print("");
+        System.out.println("Dir1 size: " + dir1.getSize());
+        System.out.println("Total size: " + root.getSize());
+
     }
 }

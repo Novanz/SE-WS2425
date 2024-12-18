@@ -33,4 +33,13 @@ public class Directory implements FSElement {
         }
     }
 
+    @Override
+    public int getSize() {
+        int result = 0;
+        for (FSElement element : elements) {
+            result += element.getSize();
+        }
+        return result;
+    }
+
 }
