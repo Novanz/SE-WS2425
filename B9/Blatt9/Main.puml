@@ -1,0 +1,50 @@
+@startuml
+
+abstract class Message {
+  - sender: String
+  - receiver: String
+  - timestamp: Date
+  + Message(sender: String, receiver: String)
+}
+
+class TextMessage {
+  - content: String
+  + TextMessage(sender: String, receiver: String, content: String)
+}
+
+class MultimediaMessage {
+  - content: byte[]
+  - mediaType: String
+  + MultimediaMessage(sender: String, receiver: String, content: byte[], mediaType: String)
+}
+
+interface MessageService {
+  + register(name: String, receiver: MessageReceiver)
+  + unregister(name: String)
+  + sendTextMessage(sender: String, receiver: String, content: String)
+  + sendMultimediaMessage(sender: String, receiver: String, content: byte[], mediaType: String)
+}
+
+class MessageServiceImpl {
+  - receivers: Map<String, MessageReceiver>
+}
+
+interface MessageReceiver {
+  + receiveMessage(message: Message)
+}
+
+class MessageClient {
+  - name: String
+  - service: MessageService
+  + MessageClient(name: String, service: MessageService)
+  + receiveMessage(message: Message)
+  + disconnect()
+}
+
+Message <|-- TextMessage
+Message <|-- MultimediaMessage
+MessageService <|.. MessageServiceImpl
+MessageReceiver <|.. MessageClient
+MessageServiceImpl o-- MessageReceiver
+
+@enduml

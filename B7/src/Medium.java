@@ -13,7 +13,7 @@ public class Medium {
 		return medium.isReserved();
 	}
 
-	public Medium(String title, String autor, String publisher, int year, int isbn, boolean reserved, String catergory, int id) {
+	public Medium(String title, String autor, String publisher, int year, long isbn, boolean reserved, String catergory, int id) {
 		this.title = title;
 		this.autor = autor;
 		this.publisher = publisher;
