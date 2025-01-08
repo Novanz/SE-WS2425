@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-   public static void main(String[] args) {
+    public static void main(String[] args) {
         NewsFeed newsFeed = new NewsFeed();
         PremiumSubscriber premiumSubscriber = new PremiumSubscriber();
         FreeSubscriber freeSubscriber = new FreeSubscriber();
@@ -13,7 +13,8 @@ public class Main {
             System.out.println("3. Unregister Premium Subscriber");
             System.out.println("4. Unregister Free Subscriber");
             System.out.println("5. Set News");
-            System.out.println("6. Exit");
+            System.out.println("6. Set Blog");
+            System.out.println("7. Exit");
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
 
@@ -36,11 +37,17 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Enter news content:");
-                    String content = scanner.nextLine();
-                    News news = new News(content);
-                    newsFeed.setNews(news);
+                    String newsContent = scanner.nextLine();
+                    Resource news = ResourceFactory.createResource("news", newsContent);
+                    newsFeed.setNews(new News(news.getContent()));
                     break;
                 case 6:
+                    System.out.println("Enter blog content:");
+                    String blogContent = scanner.nextLine();
+                    Resource blog = ResourceFactory.createResource("blog", blogContent);
+                    blog.display();
+                    break;
+                case 7:
                     scanner.close();
                     System.exit(0);
             }

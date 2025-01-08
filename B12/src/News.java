@@ -1,12 +1,10 @@
-public class News {
-     private String content;
-
+public class News extends Resource {
     public News(String content) {
-        this.content = content;
+        super(content);
     }
 
     @Override
-    public String toString() {
-        return content;
+    public void display() {
+        System.out.println("News: " + getContent());
     }
 }
