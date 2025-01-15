@@ -25,6 +25,18 @@ public class Directory implements FSElement {
         elements.remove(element);
     }
 
+    public List<FSElement> getElements() {
+        return elements;
+    }
+
+    @Override
+    public void accept(FSVisitor visitor) {
+        visitor.visit(this);
+        for (FSElement element : elements) {
+            element.accept(visitor);
+        }
+    }
+
     @Override
     public void print(String prefix) {
         System.out.println(prefix + "+ " + name);

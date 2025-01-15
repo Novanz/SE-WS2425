@@ -24,4 +24,9 @@ public class File implements FSElement {
     public int getSize() {
         return size;
     }
+
+    @Override
+    public void accept(FSVisitor visitor) {
+        visitor.visit(this);
+    }
 }
